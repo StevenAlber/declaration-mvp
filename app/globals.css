@@ -1,28 +1,27 @@
 /* ============================================
    THE DECLARATION — Civilizational Artefact
-   Design System v7.0
+   Design System v7.1 — STRONG VERSION
    ============================================ */
 
-/* Color Palette — Archival */
 :root {
-  --color-bg: #F5F3EE;
-  --color-bg-warm: #EDE9E0;
-  --color-bg-document: #FDFCF9;
-  --color-text: #2C2C2C;
-  --color-text-muted: #6B6B6B;
-  --color-text-quiet: #9A9A9A;
-  --color-accent: #1B4D3E;
-  --color-accent-light: #2A6B55;
-  --color-gold: #8B7355;
-  --color-gold-light: #A69076;
-  --color-border: #D4CFC4;
-  --color-border-light: #E8E4DB;
+  --color-bg: #1a1a18;
+  --color-bg-warm: #242420;
+  --color-bg-card: #2a2a26;
+  --color-bg-light: #f5f3ee;
+  --color-text: #e8e4db;
+  --color-text-muted: #a09a8c;
+  --color-text-dark: #1a1a18;
+  --color-accent: #c9a227;
+  --color-accent-dim: #8b7355;
+  --color-green: #2d5a47;
+  --color-green-light: #3d7a5f;
+  --color-border: #3a3a35;
+  --color-border-light: #4a4a44;
   
   --font-serif: 'Georgia', 'Times New Roman', serif;
   --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-/* Reset */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -43,7 +42,7 @@ body {
 }
 
 /* ============================================
-   HEADER — Minimal, Institutional
+   HEADER
    ============================================ */
 
 .header {
@@ -52,14 +51,15 @@ body {
   left: 0;
   right: 0;
   z-index: 100;
-  background: var(--color-bg);
-  border-bottom: 1px solid var(--color-border-light);
+  background: rgba(26, 26, 24, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .header-inner {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 1rem 2rem;
+  padding: 1.25rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -67,23 +67,24 @@ body {
 
 .logo {
   font-family: var(--font-sans);
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.15em;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
+  color: var(--color-accent);
   text-decoration: none;
 }
 
 .nav {
   display: flex;
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
 .nav a {
   font-family: var(--font-sans);
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--color-text-muted);
   text-decoration: none;
   transition: color 0.3s ease;
@@ -94,7 +95,7 @@ body {
 }
 
 /* ============================================
-   SILENCE SECTIONS — Full screen breathing
+   OPENING SILENCE — Full screen hero
    ============================================ */
 
 .silence {
@@ -104,103 +105,93 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 4rem 2rem;
-  background: var(--color-bg);
+  padding: 6rem 2rem;
+  background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-warm) 100%);
+  position: relative;
+}
+
+.silence::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse at center, rgba(201, 162, 39, 0.03) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .silence .monumental {
   font-family: var(--font-serif);
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   font-weight: 400;
   color: var(--color-text);
-  letter-spacing: -0.01em;
-  line-height: 1.3;
-  max-width: 800px;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  max-width: 900px;
   margin-bottom: 1.5rem;
+  position: relative;
 }
 
 .silence .monumental-ru {
   font-family: var(--font-serif);
   font-size: 1.5rem;
   font-style: italic;
-  color: var(--color-text-muted);
+  color: var(--color-accent-dim);
   max-width: 700px;
 }
 
-.silence-statement {
-  min-height: 60vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 4rem 2rem;
-  background: var(--color-bg-warm);
-}
-
-.silence-statement p {
-  font-family: var(--font-serif);
-  font-size: 1.75rem;
-  font-weight: 400;
-  color: var(--color-text);
-  max-width: 600px;
-  line-height: 1.5;
-}
-
-.silence-statement .statement-ru {
-  font-size: 1.25rem;
-  font-style: italic;
-  color: var(--color-text-muted);
-  margin-top: 1rem;
-}
-
 /* ============================================
-   DOCUMENT BLOCK — Archival header
+   DOCUMENT BLOCK
    ============================================ */
 
 .document-block {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 6rem 2rem 4rem;
+  padding: 4rem 2rem 5rem;
   text-align: center;
+  background: var(--color-bg-warm);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .document-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 1.5rem;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  padding-bottom: 1rem;
   border-bottom: 1px solid var(--color-border);
-  margin-bottom: 3rem;
 }
 
 .document-mark {
   font-family: var(--font-sans);
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--color-text-quiet);
+  color: var(--color-text-muted);
 }
 
 .document-date {
   font-family: var(--font-sans);
   font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  color: var(--color-gold);
+  letter-spacing: 0.15em;
+  color: var(--color-accent);
 }
 
 .document-content h1 {
   font-family: var(--font-serif);
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 400;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.15em;
   color: var(--color-accent);
   margin-bottom: 1rem;
 }
 
 .document-content .subtitle {
   font-family: var(--font-serif);
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   color: var(--color-text);
   margin-bottom: 0.5rem;
 }
@@ -213,55 +204,107 @@ body {
 }
 
 /* ============================================
-   ARTEFACT SECTIONS — Document feel
+   SILENCE STATEMENT — Pause sections
+   ============================================ */
+
+.silence-statement {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 5rem 2rem;
+  background: var(--color-green);
+  position: relative;
+}
+
+.silence-statement::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+}
+
+.silence-statement::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+}
+
+.silence-statement p {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 400;
+  color: #fff;
+  max-width: 700px;
+  line-height: 1.4;
+}
+
+.silence-statement .statement-ru {
+  font-size: 1.25rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 1rem;
+}
+
+/* ============================================
+   ARTEFACT SECTIONS
    ============================================ */
 
 .artefact-section {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 4rem 2rem;
+  padding: 5rem 2rem;
 }
 
 .section-label {
   font-family: var(--font-sans);
   font-size: 0.65rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--color-gold);
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--color-border-light);
-  margin-bottom: 2rem;
+  color: var(--color-accent);
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 2.5rem;
 }
 
 .artefact-content {
-  background: var(--color-bg-document);
-  border: 1px solid var(--color-border-light);
-  padding: 2.5rem;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  padding: 3rem;
 }
 
 .artefact-content .lead {
-  font-size: 1.2rem;
-  line-height: 1.9;
+  font-size: 1.3rem;
+  line-height: 1.8;
   color: var(--color-text);
   margin-bottom: 1.5rem;
 }
 
 .artefact-content .lead-ru {
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-style: italic;
   line-height: 1.8;
   color: var(--color-text-muted);
 }
 
 .artefact-content .institutional {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   line-height: 1.9;
   color: var(--color-text);
   margin-bottom: 1.5rem;
 }
 
 .artefact-content .institutional-ru {
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-style: italic;
   line-height: 1.8;
   color: var(--color-text-muted);
@@ -278,9 +321,10 @@ body {
 }
 
 .clarification-block {
-  background: var(--color-bg-document);
-  border: 1px solid var(--color-border-light);
-  padding: 2rem;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-green);
+  padding: 2.5rem;
   margin-bottom: 1.5rem;
 }
 
@@ -290,23 +334,23 @@ body {
 
 .clarification-block h3 {
   font-family: var(--font-sans);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--color-accent);
-  margin-bottom: 1rem;
+  color: var(--color-green-light);
+  margin-bottom: 1.25rem;
 }
 
 .clarification-block p {
-  font-size: 1rem;
+  font-size: 1.05rem;
   line-height: 1.8;
   color: var(--color-text);
   margin-bottom: 1rem;
 }
 
 .clarification-block .text-ru {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-style: italic;
   color: var(--color-text-muted);
   margin-bottom: 0;
@@ -316,46 +360,56 @@ body {
    TIER SECTION
    ============================================ */
 
+.tiers .artefact-content {
+  background: var(--color-bg-warm);
+}
+
 .tiers .tier-intro {
-  font-size: 1rem;
+  font-size: 1.05rem;
   line-height: 1.8;
   color: var(--color-text);
   margin-bottom: 1rem;
 }
 
 .tiers .tier-intro-ru {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-style: italic;
   color: var(--color-text-muted);
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
   padding-bottom: 2rem;
-  border-bottom: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .tier-grid {
   display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
 }
 
 .tier-item {
-  background: var(--color-bg);
+  background: var(--color-bg-card);
   border: 1px solid var(--color-border);
   padding: 2rem;
+  transition: border-color 0.3s ease;
+}
+
+.tier-item:hover {
+  border-color: var(--color-accent);
 }
 
 .tier-amount {
-  font-family: var(--font-sans);
-  font-size: 1.5rem;
-  font-weight: 300;
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 400;
   color: var(--color-accent);
   margin-bottom: 0.5rem;
 }
 
 .tier-name {
   font-family: var(--font-sans);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-text);
   margin-bottom: 0.25rem;
@@ -380,29 +434,30 @@ body {
    ============================================ */
 
 .exclusion .artefact-content {
-  background: var(--color-bg-warm);
+  background: var(--color-bg);
+  border-color: var(--color-accent-dim);
 }
 
 .exclusion-list {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .exclusion-item {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .exclusion-mark {
-  font-size: 1.2rem;
-  color: var(--color-gold);
-  line-height: 1.6;
+  font-size: 1.5rem;
+  color: var(--color-accent);
+  line-height: 1.4;
 }
 
 .exclusion-item p {
-  font-size: 1rem;
+  font-size: 1.05rem;
   line-height: 1.6;
   color: var(--color-text);
 }
@@ -413,51 +468,53 @@ body {
 
 .entry .artefact-content {
   text-align: center;
+  background: var(--color-green);
+  border-color: var(--color-green-light);
 }
 
 .entry-text {
-  font-size: 1rem;
+  font-size: 1.1rem;
   line-height: 1.8;
-  color: var(--color-text);
+  color: #fff;
   margin-bottom: 0.75rem;
 }
 
 .entry-text-ru {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-style: italic;
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.7);
   margin-bottom: 2.5rem;
 }
 
 .entry-action {
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--color-border-light);
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .entry-link {
   display: inline-block;
   font-family: var(--font-sans);
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.15em;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
+  color: var(--color-bg);
+  background: var(--color-accent);
   text-decoration: none;
-  padding: 1rem 2rem;
-  border: 1px solid var(--color-border);
+  padding: 1.25rem 3rem;
   transition: all 0.3s ease;
 }
 
 .entry-link:hover {
-  color: var(--color-accent);
-  border-color: var(--color-accent);
+  background: #d4ad2c;
+  transform: translateY(-2px);
 }
 
 .entry-note {
   font-family: var(--font-sans);
-  font-size: 0.7rem;
-  color: var(--color-text-quiet);
-  margin-top: 1rem;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 1.25rem;
   letter-spacing: 0.05em;
 }
 
@@ -481,7 +538,7 @@ body {
 .legal-text-ru {
   font-size: 0.8rem;
   font-style: italic;
-  color: var(--color-text-quiet);
+  color: var(--color-accent-dim);
 }
 
 /* ============================================
@@ -492,6 +549,8 @@ body {
   padding: 6rem 2rem;
   display: flex;
   justify-content: center;
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-border);
 }
 
 .registry-seal {
@@ -499,41 +558,43 @@ body {
 }
 
 .seal-mark {
-  font-size: 2.5rem;
-  color: var(--color-gold);
-  margin-bottom: 1rem;
+  font-size: 3rem;
+  color: var(--color-accent);
+  margin-bottom: 1.5rem;
 }
 
 .seal-text {
   font-family: var(--font-sans);
   font-size: 0.7rem;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--color-text-muted);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
 }
 
 .seal-years {
   font-family: var(--font-serif);
-  font-size: 0.85rem;
-  color: var(--color-gold-light);
+  font-size: 1rem;
+  color: var(--color-accent-dim);
 }
 
 /* ============================================
-   FOOTER — Minimal
+   FOOTER
    ============================================ */
 
 .footer {
-  padding: 2rem;
+  padding: 2.5rem 2rem;
   text-align: center;
-  border-top: 1px solid var(--color-border-light);
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-border);
 }
 
 .footer p {
   font-family: var(--font-sans);
   font-size: 0.65rem;
-  letter-spacing: 0.1em;
-  color: var(--color-text-quiet);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
 }
 
 /* ============================================
@@ -546,31 +607,36 @@ body {
   }
   
   .silence .monumental {
-    font-size: 1.75rem;
+    font-size: 2.25rem;
   }
   
   .silence .monumental-ru {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
   }
   
   .silence-statement p {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
   }
   
   .document-content h1 {
-    font-size: 2rem;
+    font-size: 1.75rem;
+    letter-spacing: 0.1em;
   }
   
   .artefact-section {
-    padding: 3rem 1.5rem;
+    padding: 3.5rem 1.5rem;
   }
   
   .artefact-content {
-    padding: 1.5rem;
+    padding: 2rem;
   }
   
-  .header-inner {
-    padding: 1rem 1.5rem;
+  .tier-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .tier-amount {
+    font-size: 1.75rem;
   }
   
   .nav {
@@ -580,14 +646,24 @@ body {
 
 @media (max-width: 480px) {
   .silence {
-    min-height: 80vh;
+    min-height: 85vh;
+    padding: 5rem 1.5rem;
   }
   
   .silence-statement {
-    min-height: 50vh;
+    min-height: 40vh;
+    padding: 3rem 1.5rem;
   }
   
-  .tier-amount {
+  .silence-statement p {
     font-size: 1.25rem;
+  }
+  
+  .clarification-block {
+    padding: 1.5rem;
+  }
+  
+  .tier-item {
+    padding: 1.5rem;
   }
 }
